@@ -1,0 +1,543 @@
+import React, { useState } from 'react';
+import { ChevronDown, Cpu, Zap, Radio, Code, Cog, Eye, CheckCircle, ArrowRight, Home, Users, Info, Wrench, BookOpen } from 'lucide-react';
+
+const BrazoMecanicoWeb = () => {
+  const [paginaActual, setPaginaActual] = useState('inicio');
+
+  const navegarA = (pagina) => {
+    setPaginaActual(pagina);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const NavBar = () => (
+    <nav className="bg-black bg-opacity-40 backdrop-blur-md py-4 sticky top-0 z-50 border-b border-white border-opacity-20">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Cpu className="text-cyan-400" size={32} />
+            <span className="text-white font-bold text-lg">Brazo Mecánico</span>
+          </div>
+          
+          <div className="flex gap-2 flex-wrap">
+            <button
+              onClick={() => navegarA('inicio')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                paginaActual === 'inicio' 
+                  ? 'bg-cyan-500 text-white' 
+                  : 'bg-white bg-opacity-10 text-gray-300 hover:bg-opacity-20'
+              }`}
+            >
+              <Home size={18} />
+              <span className="hidden sm:inline">Inicio</span>
+            </button>
+            
+            <button
+              onClick={() => navegarA('proyecto')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                paginaActual === 'proyecto' 
+                  ? 'bg-cyan-500 text-white' 
+                  : 'bg-white bg-opacity-10 text-gray-300 hover:bg-opacity-20'
+              }`}
+            >
+              <Info size={18} />
+              <span className="hidden sm:inline">Proyecto</span>
+            </button>
+            
+            <button
+              onClick={() => navegarA('funcionamiento')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                paginaActual === 'funcionamiento' 
+                  ? 'bg-cyan-500 text-white' 
+                  : 'bg-white bg-opacity-10 text-gray-300 hover:bg-opacity-20'
+              }`}
+            >
+              <Cog size={18} />
+              <span className="hidden sm:inline">Funcionamiento</span>
+            </button>
+            
+            <button
+              onClick={() => navegarA('componentes')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                paginaActual === 'componentes' 
+                  ? 'bg-cyan-500 text-white' 
+                  : 'bg-white bg-opacity-10 text-gray-300 hover:bg-opacity-20'
+              }`}
+            >
+              <Wrench size={18} />
+              <span className="hidden sm:inline">Componentes</span>
+            </button>
+            
+            <button
+              onClick={() => navegarA('conclusion')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${
+                paginaActual === 'conclusion' 
+                  ? 'bg-cyan-500 text-white' 
+                  : 'bg-white bg-opacity-10 text-gray-300 hover:bg-opacity-20'
+              }`}
+            >
+              <BookOpen size={18} />
+              <span className="hidden sm:inline">Conclusión</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+
+  const PaginaInicio = () => (
+    <div className="min-h-screen flex items-center justify-center px-6 py-20">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Logo/Título Principal */}
+        <div className="mb-12 animate-fade-in">
+          <div className="inline-block bg-gradient-to-br from-cyan-400 to-blue-600 p-6 rounded-3xl shadow-2xl mb-6">
+            <Cpu size={80} className="text-white" />
+          </div>
+          <h1 className="text-6xl font-extrabold text-white mb-4 drop-shadow-lg">
+            Brazo Mecánico Robótico
+          </h1>
+          <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-3 rounded-full shadow-lg">
+            <p className="text-2xl font-bold text-white">
+              🏆 Expo Técnica 2025
+            </p>
+          </div>
+        </div>
+
+        {/* Integrantes */}
+        <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-10 border border-white border-opacity-20 shadow-2xl mb-8">
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <Users className="text-cyan-400" size={32} />
+            <h2 className="text-3xl font-bold text-white">Integrantes del Equipo</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
+              <p className="text-white font-bold text-xl">👤 Integrante 1</p>
+            </div>
+            <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
+              <p className="text-white font-bold text-xl">👤 Integrante 2</p>
+            </div>
+            <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
+              <p className="text-white font-bold text-xl">👤 Integrante 3</p>
+            </div>
+            <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
+              <p className="text-white font-bold text-xl">👤 Integrante 4</p>
+            </div>
+          </div>
+
+          <div className="border-t border-white border-opacity-20 pt-6">
+            <p className="text-cyan-200 text-lg mb-2">
+              <strong>Carrera:</strong> Técnico en ACPI
+            </p>
+            <p className="text-cyan-200 text-lg mb-2">
+              <strong>Año:</strong> Tercer Año
+            </p>
+            <p className="text-cyan-200 text-lg">
+              <strong>Institución:</strong> Escuela Industrial
+            </p>
+          </div>
+        </div>
+
+        {/* Descripción Breve */}
+        <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 shadow-2xl border border-white border-opacity-20 mb-8">
+          <h3 className="text-2xl font-bold text-white mb-4">Sobre el Proyecto</h3>
+          <p className="text-indigo-100 text-lg leading-relaxed">
+            Sistema de control automático de lazo cerrado que utiliza sensores y actuadores 
+            para detectar, agarrar y organizar objetos en una repisa de 6 posiciones. 
+            Integra conocimientos de <strong>Programación</strong> y <strong>Tecnología de Control</strong>.
+          </p>
+        </div>
+
+        {/* Botón CTA */}
+        <button
+          onClick={() => navegarA('proyecto')}
+          className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold text-xl px-10 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all flex items-center gap-3 mx-auto"
+        >
+          Ver Proyecto Completo
+          <ArrowRight size={24} />
+        </button>
+      </div>
+    </div>
+  );
+
+  const PaginaProyecto = () => (
+    <>
+      {/* Hero Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl">
+            <h2 className="text-5xl font-extrabold text-white mb-4">
+              Sistema de Control Automático
+            </h2>
+            <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+              Un brazo robótico inteligente que detecta objetos y los organiza automáticamente en una repisa de 6 posiciones usando sensores y Arduino.
+            </p>
+            <div className="flex gap-4 justify-center flex-wrap">
+              <div className="bg-cyan-500 bg-opacity-20 backdrop-blur px-6 py-3 rounded-full border border-cyan-400">
+                <span className="text-cyan-200 font-semibold">🤖 Lazo Cerrado</span>
+              </div>
+              <div className="bg-purple-500 bg-opacity-20 backdrop-blur px-6 py-3 rounded-full border border-purple-400">
+                <span className="text-purple-200 font-semibold">⚡ Automático</span>
+              </div>
+              <div className="bg-pink-500 bg-opacity-20 backdrop-blur px-6 py-3 rounded-full border border-pink-400">
+                <span className="text-pink-200 font-semibold">👁️ Con Sensores</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tipo de Sistema */}
+      <section className="py-16 px-6 bg-black bg-opacity-20">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            ¿Por Qué es de Lazo Cerrado?
+          </h2>
+          
+          <div className="bg-gradient-to-br from-indigo-600 to-purple-700 rounded-2xl p-8 shadow-2xl border border-white border-opacity-20">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-4">✅ Características</h3>
+                <ul className="space-y-3 text-indigo-100">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <span>Tiene <strong>retroalimentación</strong> del sensor</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <span>La salida depende de la entrada</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <span>Se ajusta automáticamente</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="text-green-400 flex-shrink-0 mt-1" size={20} />
+                    <span>No funciona sin detectar objeto</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-2xl font-bold text-white mb-4">🤖 Sistema Automático</h3>
+                <p className="text-indigo-100 mb-4">
+                  No requiere intervención humana constante. Una vez programado, el Arduino controla todo el proceso de forma autónoma.
+                </p>
+                <p className="text-indigo-100">
+                  El operador solo supervisa y coloca objetos en el área de detección.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+
+  const PaginaFuncionamiento = () => (
+    <>
+      {/* Cómo Funciona */}
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            ¿Cómo Funciona?
+          </h2>
+          
+          <div className="grid gap-6">
+            {/* Paso 1 */}
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="bg-white rounded-full p-3 flex-shrink-0">
+                  <Eye className="text-blue-600" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">1. Detección</h3>
+                  <p className="text-blue-50">El sensor ultrasónico detecta un objeto en el área de inicio (5-10 cm)</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Paso 2 */}
+            <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="bg-white rounded-full p-3 flex-shrink-0">
+                  <Cog className="text-purple-600" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">2. Agarre</h3>
+                  <p className="text-purple-50">Los servomotores mueven el brazo, lo elevan a 90° y la pinza agarra el objeto</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Paso 3 */}
+            <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="bg-white rounded-full p-3 flex-shrink-0">
+                  <Zap className="text-orange-600" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">3. Transporte</h3>
+                  <p className="text-orange-50">El motor paso a paso gira la base del brazo hacia la posición correcta de la repisa</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Paso 4 */}
+            <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
+              <div className="flex items-start gap-4">
+                <div className="bg-white rounded-full p-3 flex-shrink-0">
+                  <CheckCircle className="text-green-600" size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">4. Guardado</h3>
+                  <p className="text-green-50">Suelta el objeto en la repisa y vuelve a la posición inicial esperando el próximo</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Diagrama de Bloques */}
+      <section className="py-16 px-6 bg-black bg-opacity-20">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-12">
+            Diagrama de Sistema
+          </h2>
+          
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-20">
+            <div className="flex flex-col items-center gap-4">
+              {/* Entrada */}
+              <div className="bg-gradient-to-r from-green-400 to-emerald-500 px-8 py-4 rounded-xl shadow-lg">
+                <p className="text-white font-bold text-lg">📥 ENTRADA</p>
+                <p className="text-green-50 text-sm">Objeto detectado</p>
+              </div>
+
+              <ArrowRight className="text-white rotate-90" size={32} />
+
+              {/* Controlador */}
+              <div className="bg-gradient-to-r from-blue-500 to-indigo-600 px-8 py-4 rounded-xl shadow-lg">
+                <p className="text-white font-bold text-lg">🧠 CONTROLADOR</p>
+                <p className="text-blue-50 text-sm">Arduino + Código</p>
+              </div>
+
+              <ArrowRight className="text-white rotate-90" size={32} />
+
+              {/* Actuadores */}
+              <div className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-4 rounded-xl shadow-lg">
+                <p className="text-white font-bold text-lg">⚙️ ACTUADORES</p>
+                <p className="text-purple-50 text-sm">Servos + Motor paso a paso</p>
+              </div>
+
+              <ArrowRight className="text-white rotate-90" size={32} />
+
+              {/* Proceso */}
+              <div className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-xl shadow-lg">
+                <p className="text-white font-bold text-lg">🦾 PROCESO</p>
+                <p className="text-orange-50 text-sm">Movimiento del brazo</p>
+              </div>
+
+              <ArrowRight className="text-white rotate-90" size={32} />
+
+              {/* Salida */}
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-xl shadow-lg">
+                <p className="text-white font-bold text-lg">📤 SALIDA</p>
+                <p className="text-cyan-50 text-sm">Objeto guardado en repisa</p>
+              </div>
+
+              {/* Retroalimentación */}
+              <div className="mt-4 flex items-center gap-3">
+                <div className="h-20 w-0.5 bg-yellow-400"></div>
+                <div className="bg-gradient-to-r from-yellow-400 to-amber-500 px-8 py-4 rounded-xl shadow-lg">
+                  <p className="text-white font-bold text-lg">🔄 RETROALIMENTACIÓN</p>
+                  <p className="text-yellow-50 text-sm">Sensor ultrasónico verifica</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+
+  const PaginaComponentes = () => (
+    <section className="py-16 px-6">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-4xl font-bold text-white text-center mb-12">
+          Componentes del Sistema
+        </h2>
+        
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 border border-white border-opacity-20">
+            <h3 className="text-xl font-bold text-cyan-400 mb-3 flex items-center gap-2">
+              <Cpu size={24} />
+              Hardware
+            </h3>
+            <ul className="space-y-2 text-gray-200">
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                Arduino UNO (cerebro del sistema)
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                3 Servomotores (hombro, codo, pinza)
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                Motor Paso a Paso (base giratoria)
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                Sensor Ultrasónico HC-SR04
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                Driver ULN2003
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-cyan-400" />
+                Protoboard y cables
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 border border-white border-opacity-20">
+            <h3 className="text-xl font-bold text-purple-400 mb-3 flex items-center gap-2">
+              <Code size={24} />
+              Software
+            </h3>
+            <ul className="space-y-2 text-gray-200">
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-purple-400" />
+                Programación en Arduino IDE
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-purple-400" />
+                Librerías: Servo.h y Stepper.h
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-purple-400" />
+                Control PWM para servos
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-purple-400" />
+                Sistema de ciclos (6 posiciones)
+              </li>
+              <li className="flex items-center gap-2">
+                <ArrowRight size={16} className="text-purple-400" />
+                Retroalimentación por sensor
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Detalles técnicos */}
+        <div className="mt-8 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 shadow-2xl border border-white border-opacity-20">
+          <h3 className="text-2xl font-bold text-white mb-6 text-center">Funcionamiento de los Componentes</h3>
+          
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-white bg-opacity-10 backdrop-blur rounded-xl p-4">
+              <h4 className="font-bold text-cyan-300 mb-2">🔄 Motor Paso a Paso</h4>
+              <p className="text-sm text-indigo-100">
+                Arduino envía pulsos al driver ULN2003. Cada pulso gira el motor un "paso" exacto.
+              </p>
+            </div>
+            
+            <div className="bg-white bg-opacity-10 backdrop-blur rounded-xl p-4">
+              <h4 className="font-bold text-purple-300 mb-2">⚙️ Servomotores</h4>
+              <p className="text-sm text-indigo-100">
+                Arduino envía señal PWM. El ancho del pulso determina el ángulo exacto (0°-180°).
+              </p>
+            </div>
+            
+            <div className="bg-white bg-opacity-10 backdrop-blur rounded-xl p-4">
+              <h4 className="font-bold text-pink-300 mb-2">📡 Sensor Ultrasónico</h4>
+              <p className="text-sm text-indigo-100">
+                Envía pulso de sonido y mide el tiempo de retorno para calcular distancia.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+
+  const PaginaConclusion = () => (
+    <section className="py-16 px-6">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-4xl font-bold text-white mb-6">
+          Conclusión
+        </h2>
+        <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-20 mb-8">
+          <p className="text-xl text-gray-200 leading-relaxed mb-6">
+            Este proyecto integra <span className="text-cyan-400 font-bold">Programación</span> y <span className="text-purple-400 font-bold">Tecnología de Control</span>, 
+            aplicando teoría de sistemas de control a un dispositivo real. Logramos crear un brazo robótico funcional 
+            que demuestra cómo funcionan los sistemas automáticos de lazo cerrado en la industria moderna.
+          </p>
+          
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl p-6 mb-6">
+            <h3 className="text-xl font-bold text-white mb-3">Aprendizajes Clave</h3>
+            <div className="grid md:grid-cols-2 gap-4 text-left">
+              <div className="flex items-start gap-2">
+                <CheckCircle className="text-green-300 flex-shrink-0 mt-1" size={20} />
+                <span className="text-white">Sistemas de control automático</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="text-green-300 flex-shrink-0 mt-1" size={20} />
+                <span className="text-white">Programación de microcontroladores</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="text-green-300 flex-shrink-0 mt-1" size={20} />
+                <span className="text-white">Integración de sensores y actuadores</span>
+              </div>
+              <div className="flex items-start gap-2">
+                <CheckCircle className="text-green-300 flex-shrink-0 mt-1" size={20} />
+                <span className="text-white">Retroalimentación en sistemas cerrados</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-lg text-cyan-200 italic">
+            "Es importante conocer los sistemas de control ya que con ese conocimiento podemos crear 
+            maquinaria funcional y aplicar la teoría a proyectos reales."
+          </p>
+        </div>
+
+        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-2xl">
+          <p className="text-white font-bold text-2xl">
+            🏆 Expo Técnica 2025
+          </p>
+          <p className="text-orange-50 mt-2">
+            Automatización y Control de Procesos Industriales - Tercer Año
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
+      <NavBar />
+      
+      {paginaActual === 'inicio' && <PaginaInicio />}
+      {paginaActual === 'proyecto' && <PaginaProyecto />}
+      {paginaActual === 'funcionamiento' && <PaginaFuncionamiento />}
+      {paginaActual === 'componentes' && <PaginaComponentes />}
+      {paginaActual === 'conclusion' && <PaginaConclusion />}
+
+      {/* Footer */}
+      <footer className="bg-black bg-opacity-40 py-6 mt-12">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <p className="text-gray-400">
+            Proyecto ACPI - Automatización y Control de Procesos Industriales
+          </p>
+          <p className="text-gray-500 text-sm mt-2">
+            Escuela Industrial - Tercer Año - Expo Técnica 2025
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default BrazoMecanicoWeb;
