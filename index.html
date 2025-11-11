@@ -1,3 +1,103 @@
+# Guía de Despliegue en Vercel - Brazo Mecánico
+
+## 📁 Estructura de archivos necesaria
+
+```
+brazo-mecanico/
+├── package.json
+├── vite.config.js
+├── index.html
+├── public/
+└── src/
+    ├── main.jsx
+    └── App.jsx
+```
+
+---
+
+## 📄 1. package.json
+
+```json
+{
+  "name": "brazo-mecanico-acpi",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.263.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5"
+  }
+}
+```
+
+---
+
+## 📄 2. vite.config.js
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+})
+```
+
+---
+
+## 📄 3. index.html
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Brazo Mecánico - Expo Técnica 2025</title>
+    <meta name="description" content="Proyecto de Brazo Mecánico Robótico - Sistema de Control Automático de Lazo Cerrado" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+---
+
+## 📄 4. src/main.jsx
+
+```jsx
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
+```
+
+---
+
+## 📄 5. src/App.jsx
+
+```jsx
 import React, { useState } from 'react';
 import { ChevronDown, Cpu, Zap, Radio, Code, Cog, Eye, CheckCircle, ArrowRight, Home, Users, Info, Wrench, BookOpen } from 'lucide-react';
 
@@ -87,7 +187,6 @@ const BrazoMecanicoWeb = () => {
   const PaginaInicio = () => (
     <div className="min-h-screen flex items-center justify-center px-6 py-20">
       <div className="max-w-4xl mx-auto text-center">
-        {/* Logo/Título Principal */}
         <div className="mb-12 animate-fade-in">
           <div className="inline-block bg-gradient-to-br from-cyan-400 to-blue-600 p-6 rounded-3xl shadow-2xl mb-6">
             <Cpu size={80} className="text-white" />
@@ -97,30 +196,32 @@ const BrazoMecanicoWeb = () => {
           </h1>
           <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 px-8 py-3 rounded-full shadow-lg">
             <p className="text-2xl font-bold text-white">
-              🏆 Expo Técnica 2025
+              Expo Técnica 2025
             </p>
           </div>
         </div>
 
-        {/* Integrantes */}
         <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-10 border border-white border-opacity-20 shadow-2xl mb-8">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Users className="text-cyan-400" size={32} />
-            <h2 className="text-3xl font-bold text-white">Integrantes del Equipo</h2>
+            <h2 className="text-3xl font-bold text-white">Integrantes del trabajo</h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <div className="bg-gradient-to-r from-cyan-500 to-blue-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
-              <p className="text-white font-bold text-xl">👤 Integrante 1</p>
+              <p className="text-white font-bold text-xl">Santiago Nievas</p>
             </div>
             <div className="bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
-              <p className="text-white font-bold text-xl">👤 Integrante 2</p>
+              <p className="text-white font-bold text-xl">Valentino Nueñez</p>
             </div>
             <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
-              <p className="text-white font-bold text-xl">👤 Integrante 3</p>
+              <p className="text-white font-bold text-xl">Manuel Peña</p>
             </div>
             <div className="bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all">
-              <p className="text-white font-bold text-xl">👤 Integrante 4</p>
+              <p className="text-white font-bold text-xl">Ismael Peralta</p>
+            </div>
+            <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-xl p-4 shadow-lg transform hover:scale-105 transition-all md:col-span-2">
+              <p className="text-white font-bold text-xl">Mateo Rodriguez</p>
             </div>
           </div>
 
@@ -137,7 +238,6 @@ const BrazoMecanicoWeb = () => {
           </div>
         </div>
 
-        {/* Descripción Breve */}
         <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 shadow-2xl border border-white border-opacity-20 mb-8">
           <h3 className="text-2xl font-bold text-white mb-4">Sobre el Proyecto</h3>
           <p className="text-indigo-100 text-lg leading-relaxed">
@@ -147,7 +247,6 @@ const BrazoMecanicoWeb = () => {
           </p>
         </div>
 
-        {/* Botón CTA */}
         <button
           onClick={() => navegarA('proyecto')}
           className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold text-xl px-10 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all flex items-center gap-3 mx-auto"
@@ -161,7 +260,6 @@ const BrazoMecanicoWeb = () => {
 
   const PaginaProyecto = () => (
     <>
-      {/* Hero Section */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-3xl p-12 border border-white border-opacity-20 shadow-2xl">
@@ -186,7 +284,6 @@ const BrazoMecanicoWeb = () => {
         </div>
       </section>
 
-      {/* Tipo de Sistema */}
       <section className="py-16 px-6 bg-black bg-opacity-20">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
@@ -235,7 +332,6 @@ const BrazoMecanicoWeb = () => {
 
   const PaginaFuncionamiento = () => (
     <>
-      {/* Cómo Funciona */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
@@ -243,7 +339,6 @@ const BrazoMecanicoWeb = () => {
           </h2>
           
           <div className="grid gap-6">
-            {/* Paso 1 */}
             <div className="bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
               <div className="flex items-start gap-4">
                 <div className="bg-white rounded-full p-3 flex-shrink-0">
@@ -256,7 +351,6 @@ const BrazoMecanicoWeb = () => {
               </div>
             </div>
 
-            {/* Paso 2 */}
             <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
               <div className="flex items-start gap-4">
                 <div className="bg-white rounded-full p-3 flex-shrink-0">
@@ -269,7 +363,6 @@ const BrazoMecanicoWeb = () => {
               </div>
             </div>
 
-            {/* Paso 3 */}
             <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
               <div className="flex items-start gap-4">
                 <div className="bg-white rounded-full p-3 flex-shrink-0">
@@ -282,7 +375,6 @@ const BrazoMecanicoWeb = () => {
               </div>
             </div>
 
-            {/* Paso 4 */}
             <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl p-6 transform hover:scale-105 transition-all">
               <div className="flex items-start gap-4">
                 <div className="bg-white rounded-full p-3 flex-shrink-0">
@@ -298,7 +390,6 @@ const BrazoMecanicoWeb = () => {
         </div>
       </section>
 
-      {/* Diagrama de Bloques */}
       <section className="py-16 px-6 bg-black bg-opacity-20">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-white text-center mb-12">
@@ -307,7 +398,6 @@ const BrazoMecanicoWeb = () => {
           
           <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 border border-white border-opacity-20">
             <div className="flex flex-col items-center gap-4">
-              {/* Entrada */}
               <div className="bg-gradient-to-r from-green-400 to-emerald-500 px-8 py-4 rounded-xl shadow-lg">
                 <p className="text-white font-bold text-lg">📥 ENTRADA</p>
                 <p className="text-green-50 text-sm">Objeto detectado</p>
@@ -315,7 +405,6 @@ const BrazoMecanicoWeb = () => {
 
               <ArrowRight className="text-white rotate-90" size={32} />
 
-              {/* Controlador */}
               <div className="bg-gradient-to-r from-blue-500 to-indigo-600 px-8 py-4 rounded-xl shadow-lg">
                 <p className="text-white font-bold text-lg">🧠 CONTROLADOR</p>
                 <p className="text-blue-50 text-sm">Arduino + Código</p>
@@ -323,7 +412,6 @@ const BrazoMecanicoWeb = () => {
 
               <ArrowRight className="text-white rotate-90" size={32} />
 
-              {/* Actuadores */}
               <div className="bg-gradient-to-r from-purple-500 to-pink-600 px-8 py-4 rounded-xl shadow-lg">
                 <p className="text-white font-bold text-lg">⚙️ ACTUADORES</p>
                 <p className="text-purple-50 text-sm">Servos + Motor paso a paso</p>
@@ -331,7 +419,6 @@ const BrazoMecanicoWeb = () => {
 
               <ArrowRight className="text-white rotate-90" size={32} />
 
-              {/* Proceso */}
               <div className="bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 rounded-xl shadow-lg">
                 <p className="text-white font-bold text-lg">🦾 PROCESO</p>
                 <p className="text-orange-50 text-sm">Movimiento del brazo</p>
@@ -339,13 +426,11 @@ const BrazoMecanicoWeb = () => {
 
               <ArrowRight className="text-white rotate-90" size={32} />
 
-              {/* Salida */}
               <div className="bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 rounded-xl shadow-lg">
                 <p className="text-white font-bold text-lg">📤 SALIDA</p>
                 <p className="text-cyan-50 text-sm">Objeto guardado en repisa</p>
               </div>
 
-              {/* Retroalimentación */}
               <div className="mt-4 flex items-center gap-3">
                 <div className="h-20 w-0.5 bg-yellow-400"></div>
                 <div className="bg-gradient-to-r from-yellow-400 to-amber-500 px-8 py-4 rounded-xl shadow-lg">
@@ -431,7 +516,6 @@ const BrazoMecanicoWeb = () => {
           </div>
         </div>
 
-        {/* Detalles técnicos */}
         <div className="mt-8 bg-gradient-to-r from-indigo-600 to-purple-700 rounded-2xl p-8 shadow-2xl border border-white border-opacity-20">
           <h3 className="text-2xl font-bold text-white mb-6 text-center">Funcionamiento de los Componentes</h3>
           
@@ -499,48 +583,4 @@ const BrazoMecanicoWeb = () => {
 
           <p className="text-lg text-cyan-200 italic">
             "Es importante conocer los sistemas de control ya que con ese conocimiento podemos crear 
-            maquinaria funcional y aplicar la teoría a proyectos reales."
-          </p>
-        </div>
-
-        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl p-6 shadow-2xl">
-          <p className="text-white font-bold text-2xl">
-            🏆 Expo Técnica 2025
-          </p>
-          <p className="text-orange-50 mt-2">
-            Automatización y Control de Procesos Industriales - Tercer Año
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900">
-      <NavBar />
-      
-      {paginaActual === 'inicio' && <PaginaInicio />}
-      {paginaActual === 'proyecto' && <PaginaProyecto />}
-      {paginaActual === 'funcionamiento' && <PaginaFuncionamiento />}
-      {paginaActual === 'componentes' && <PaginaComponentes />}
-      {paginaActual === 'conclusion' && <PaginaConclusion />}
-
-      {/* Footer */}
-      <footer className="bg-black bg-opacity-40 py-6 mt-12">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            Proyecto ACPI - Automatización y Control de Procesos Industriales
-          </p>
-          <p className="text-gray-500 text-sm mt-2">
-            Escuela Industrial - Tercer Año - Expo Técnica 2025
-          </p>
-        </div>
-      </footer>
-    </div>
-  );
-};
-
-export default BrazoMecanicoWeb;
-          
-   
-            
+            maquinaria funcional y aplicar la teoría a proyectos
